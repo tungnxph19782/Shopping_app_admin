@@ -13,7 +13,7 @@ void main() async {
   Get.put(ProductController());
   Get.put(UserController());
   Get.put(OrderController());
-  runApp(const MyApp()); // Chạy ứng dụng
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,// Sử dụng GetMaterialApp để hỗ trợ GetX
+      debugShowCheckedModeBanner: false,
       title: 'Shopping App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(), // Thay thế bằng trang chính của bạn
+      home: const HomePage(),
     );
   }
 }

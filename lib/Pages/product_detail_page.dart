@@ -22,7 +22,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   @override
   void initState() {
     super.initState();
-    product = widget.product; // Khởi tạo với sản phẩm ban đầu
+    product = widget.product;
   }
 
   @override
@@ -33,11 +33,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         actions: [
           IconButton(
             icon: Icon(Icons.edit),
-            onPressed: _editProduct, // Gọi hàm chỉnh sửa sản phẩm
+            onPressed: _editProduct,
           ),
           IconButton(
             icon: Icon(Icons.delete),
-            onPressed: _showConfirmDeleteDialog, // Xóa sản phẩm
+            onPressed: _showConfirmDeleteDialog,
           ),
         ],
       ),
@@ -46,7 +46,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Hiển thị hình ảnh sản phẩm
             Image.network(
               product.picture,
               fit: BoxFit.cover,
@@ -70,13 +69,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
-  // Hàm mở trang chỉnh sửa sản phẩm và cập nhật giao diện nếu thành công
   void _editProduct() {
     Get.to(() => EditProductPage(product: product))?.then((result) {
       if (result == true) {
-        // Cập nhật lại sản phẩm sau khi chỉnh sửa
         setState(() {
-          // Lấy sản phẩm cập nhật từ controller
           productController.fetchProducts().then((_) {
             product = productController.products.firstWhere((p) => p.id == product.id);
           });
@@ -85,7 +81,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     });
   }
 
-  // Hộp thoại xác nhận xóa sản phẩm
+
   void _showConfirmDeleteDialog() {
     Get.dialog(
       ConfirmActionDialog(
@@ -95,8 +91,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         cancelText: 'Hủy',
         onConfirm: () async {
           await productController.deleteProduct(product.id);
-          Get.back(result: true); // Quay lại màn hình trước đó
-          Get.snackbar("Thành công", "Đã xóa sản phẩm!"); // Hiện thông báo thành công
+          Get.back(result: true);
+          Get.snackbar("Thành công", "Đã xóa sản phẩm!");
         },
       ),
     );

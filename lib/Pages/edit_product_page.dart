@@ -23,7 +23,6 @@ class _EditProductPageState extends State<EditProductPage> {
   @override
   void initState() {
     super.initState();
-    // Gán giá trị cho các TextEditingController
     nameController.text = widget.product.name;
     descriptionController.text = widget.product.description;
     imageUrlController.text = widget.product.picture;
@@ -92,9 +91,9 @@ class _EditProductPageState extends State<EditProductPage> {
       description: description,
       picture: imageUrl,
       price: price,
-      category: widget.product.category, // Giữ nguyên danh mục
-      brand: widget.product.brand, // Giữ nguyên thương hiệu
-      offer: widget.product.offer, // Giữ nguyên thông tin khuyến mãi
+      category: widget.product.category,
+      brand: widget.product.brand,
+      offer: widget.product.offer,
     );
 
     productController.updateProduct(updatedProduct).then((_) {

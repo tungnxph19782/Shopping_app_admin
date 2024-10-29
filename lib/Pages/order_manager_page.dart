@@ -15,7 +15,7 @@ class _OrderManagementPageState extends State<OrderManagementPage> {
   @override
   void initState() {
     super.initState();
-    _orderController.fetchOrders(); // Lấy danh sách đơn hàng khi màn hình khởi tạo
+    _orderController.fetchOrders();
   }
 
   @override
@@ -26,7 +26,7 @@ class _OrderManagementPageState extends State<OrderManagementPage> {
       ),
       body: Obx(() {
         if (_orderController.orders.isEmpty) {
-          return const Center(child: CircularProgressIndicator()); // Loading nếu chưa có dữ liệu
+          return const Center(child: CircularProgressIndicator()); // Loading
         }
 
         return ListView.builder(
@@ -39,12 +39,11 @@ class _OrderManagementPageState extends State<OrderManagementPage> {
                 'Tổng tiền: ${order.totalPrice} VND\nNgày: ${order.createdAt}',
               ),
               onTap: () {
-                // Mở chi tiết đơn hàng hoặc cập nhật trạng thái
               },
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () {
-                  _confirmDelete(order.id); // Xác nhận xóa đơn hàng
+                  _confirmDelete(order.id);
                 },
               ),
             );
@@ -61,13 +60,13 @@ class _OrderManagementPageState extends State<OrderManagementPage> {
         content: const Text('Bạn có chắc chắn muốn xóa đơn hàng này không?'),
         actions: [
           TextButton(
-            onPressed: () => Get.back(), // Đóng dialog
+            onPressed: () => Get.back(),
             child: const Text('Hủy'),
           ),
           TextButton(
             onPressed: () async {
-              await _orderController.deleteOrder(orderId); // Xóa đơn hàng
-              Get.back(); // Đóng dialog
+              await _orderController.deleteOrder(orderId);
+              Get.back();
             },
             child: const Text('Xóa'),
           ),

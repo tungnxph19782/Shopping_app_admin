@@ -148,7 +148,7 @@ class _AddProductPageState extends State<AddProductPage> {
 
     final bool isOffer = selectedOffer.toLowerCase() == 'true';
     final product = Product(
-      id: '', // ID sẽ được gán sau khi thêm vào Firestore
+      id: '',
       brand: selectedBrand,
       category: selectedCategory,
       description: description,

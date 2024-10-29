@@ -22,7 +22,7 @@ class Product {
   // Tạo Product từ Map (dùng khi lấy dữ liệu từ Firebase)
   factory Product.fromMap(String id, Map<String, dynamic> map) {
     return Product(
-      id: id, // Sử dụng ID từ Firestore
+      id: id,
       brand: map['brand'] ?? '',
       category: map['category'] ?? '',
       description: map['description'] ?? '',

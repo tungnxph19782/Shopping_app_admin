@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
-  String id; // ID người dùng
+  String id;
   String name;
   String email;
   String phone;
@@ -25,7 +25,7 @@ class User {
       email: map['email'] ?? '',
       phone: map['phone'] ?? '',
       address: map['address'] ?? '',
-      createdAt: (map['createdAt'] as Timestamp).toDate(), // Chuyển đổi từ Timestamp sang DateTime
+      createdAt: (map['createdAt'] as Timestamp).toDate(),
     );
   }
 
@@ -36,7 +36,7 @@ class User {
       'email': email,
       'phone': phone,
       'address': address,
-      'createdAt': Timestamp.fromDate(createdAt), // Chuyển đổi DateTime sang Timestamp
+      'createdAt': Timestamp.fromDate(createdAt),
     };
   }
 }

@@ -6,7 +6,7 @@ class OrderController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   RxList<Order_admin> orders = <Order_admin>[].obs;
 
-  // Lấy danh sách đơn hàng từ Firestore
+
   Future<void> fetchOrders() async {
     try {
       QuerySnapshot snapshot = await _firestore.collection('orders').get();
@@ -18,33 +18,33 @@ class OrderController extends GetxController {
     }
   }
 
-  // Thêm mới đơn hàng
+
   Future<void> addOrder(Order_admin order) async {
     try {
       await _firestore.collection('orders').add(order.toMap());
-      fetchOrders(); // Tải lại danh sách sau khi thêm
+      fetchOrders();
     } catch (e) {
       print('Lỗi khi thêm đơn hàng: $e');
     }
   }
 
-  // Xóa đơn hàng
+
   Future<void> deleteOrder(String orderId) async {
     try {
       await _firestore.collection('orders').doc(orderId).delete();
-      fetchOrders(); // Tải lại danh sách sau khi xóa
+      fetchOrders();
     } catch (e) {
       print('Lỗi khi xóa đơn hàng: $e');
     }
   }
 
-  // Cập nhật trạng thái đơn hàng
+
   Future<void> updateOrderStatus(String orderId, String newStatus) async {
     try {
       await _firestore.collection('orders').doc(orderId).update({
         'status': newStatus,
       });
-      fetchOrders(); // Tải lại danh sách sau khi cập nhật
+      fetchOrders();
     } catch (e) {
       print('Lỗi khi cập nhật trạng thái đơn hàng: $e');
     }

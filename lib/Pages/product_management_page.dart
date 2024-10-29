@@ -15,7 +15,7 @@ class _ProductManagementPageState extends State<ProductManagementPage> {
   @override
   void initState() {
     super.initState();
-    _productController.fetchProducts(); // Gọi hàm để tải sản phẩm
+    _productController.fetchProducts();
   }
 
   @override
@@ -43,7 +43,6 @@ class _ProductManagementPageState extends State<ProductManagementPage> {
                 },
               ),
               onTap: () {
-                // Có thể mở màn hình chi tiết sản phẩm nếu cần
               },
             );
           },
@@ -52,7 +51,7 @@ class _ProductManagementPageState extends State<ProductManagementPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(AddProductPage())?.then((_) {
-            _productController.fetchProducts(); // Tải lại danh sách sau khi thêm
+            _productController.fetchProducts();
           });
         },
         child: Icon(Icons.add),
@@ -69,8 +68,8 @@ class _ProductManagementPageState extends State<ProductManagementPage> {
         cancelText: 'Hủy',
         onConfirm: () async {
           await _productController.deleteProduct(productId);
-          _productController.fetchProducts(); // Tải lại sản phẩm sau khi xóa
-          Get.back(); // Đóng dialog
+          _productController.fetchProducts();
+          Get.back();
         },
       ),
     );

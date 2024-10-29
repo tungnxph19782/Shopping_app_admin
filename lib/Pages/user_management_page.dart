@@ -10,12 +10,12 @@ class UserManagementPage extends StatefulWidget {
 }
 
 class _UserManagementPageState extends State<UserManagementPage> {
-  final UserController _userController = Get.find(); // Tìm controller
+  final UserController _userController = Get.find();
 
   @override
   void initState() {
     super.initState();
-    _userController.fetchUsers(); // Gọi hàm để lấy danh sách người dùng khi khởi tạo
+    _userController.fetchUsers();
   }
 
   @override
@@ -26,7 +26,7 @@ class _UserManagementPageState extends State<UserManagementPage> {
       ),
       body: Obx(() {
         if (_userController.users.isEmpty) {
-          return const Center(child: CircularProgressIndicator()); // Hiển thị loading nếu danh sách rỗng
+          return const Center(child: CircularProgressIndicator());
         }
 
         return ListView.builder(
@@ -39,7 +39,7 @@ class _UserManagementPageState extends State<UserManagementPage> {
               trailing: IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () {
-                  _confirmDelete(user.id); // Xác nhận xóa người dùng
+                  _confirmDelete(user.id);
                 },
               ),
             );
@@ -57,14 +57,14 @@ class _UserManagementPageState extends State<UserManagementPage> {
         actions: [
           TextButton(
             onPressed: () {
-              Get.back(); // Đóng dialog
+              Get.back();
             },
             child: const Text('Hủy'),
           ),
           TextButton(
             onPressed: () async {
-              await _userController.deleteUser(userId); // Gọi hàm xóa người dùng
-              Get.back(); // Đóng dialog
+              await _userController.deleteUser(userId);
+              Get.back();
             },
             child: const Text('Xóa'),
           ),
